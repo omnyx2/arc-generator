@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { OptionsProvider } from '@/app/OptionsContext'
 import localFont from "next/font/local";
 import "./globals.css";
-
+import { SingleARCHistoryProvider } from './SingleARCHistoryContext';
+import { ShapeARCHistoryProvider } from "./ARCShapeHistoryContext";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -28,7 +30,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <OptionsProvider>
+          <SingleARCHistoryProvider>
+            <ShapeARCHistoryProvider>
+             {children}
+            </ShapeARCHistoryProvider>
+          </SingleARCHistoryProvider>
+        </OptionsProvider>
       </body>
     </html>
   );
