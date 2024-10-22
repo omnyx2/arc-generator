@@ -1,12 +1,12 @@
 import rotate from './rotateClockwise';
 import reverseRotate from './rotateCounterclockwise';
 
-interface Angular<T> {
+export interface Angular<T> {
     rotate90Clockwise(): T[][];
 }
   
 
-const angularGroup = {
+export const angularGroup = {
     rotate,
     reverseRotate
 }

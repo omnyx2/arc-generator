@@ -1,29 +1,27 @@
 'use client'
 
-import {useState, useContext} from 'react'
-import { generateBitmap, singleARCObjectOption, Bitmap } from '@/components/baseObject'
-import { OptionsContext } from '@/app/OptionsContext';
-import { SingleARCHistoryContext } from '@/app/SingleARCHistoryContext'
-import { useSingleARCHistory } from '@/app/SingleARCHistoryContext';
+import {useState, useCallback} from 'react'
+import { generateBitmap, Bitmap } from '@/components/baseObject'
+import { useOptions } from '@/app/OptionsContext';
+ import { useSingleARCHistory } from '@/app/SingleARCHistoryContext';
 import Gallery from '@/components/Gallery';
 import BitmapRenderer from '@/components/Bitmap';
 import SidePanel from '@/components/SidePanel'
+
 const About: React.FC = () => {
-    const [bitmapData, useBitmapData] = useState()
-    const { options }: any= useContext(OptionsContext);
-    const { history, addToHistory } = useSingleARCHistory();
+    const [bitmapData, setBitmapData] = useState<Bitmap|undefined>([[0]])
+    const { options } = useOptions();
+    const {  addToHistory } = useSingleARCHistory();
 
-
-    const bitmapGenerator = () => {
+    const bitmapGenerator = useCallback((): void => {
       const bitmap: Bitmap = generateBitmap(options);
-      useBitmapData(bitmap)
-
+      setBitmapData(bitmap)
       addToHistory({
         options: options,
         bitmap: bitmap,
         timestamp: new Date(),
       });
-    }
+    },[options])
 
     return (
       <div className="container mx-auto p-8">

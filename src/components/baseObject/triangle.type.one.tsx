@@ -1,7 +1,6 @@
 import { getRandomColor } from '@/components/baseObject/utils'
 import { Bitmap, singleARCObjectOption } from '@/components/baseObject'
-import { cmap } from '@/settings/cmap'
-
+ 
 type triangleParams = {
     boxHeight: number;       // Height of the grid
     boxWidth: number;        // Width of the grid

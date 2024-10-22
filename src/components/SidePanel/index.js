@@ -2,15 +2,14 @@
 import React, { useState, useContext } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cmap } from '@/settings/cmap'
-import { OptionsContext, useOptions} from '@/app/OptionsContext';
-import {SingleARCHistoryContextType} from '@/app/SingleARCHistoryContext'
-function getRandomNumber(min, max) {
+import { OptionsContext } from '@/app/OptionsContext';
+ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const colors = [...cmap]
 
-  const SidePanel = ({bitmapGenerator}) => {
+  const SidePanel = ({ bitmapGenerator }) => {
   const [ isOpen, setIsOpen ] = useState(true);
   const { options, setOptions } = useContext(OptionsContext);
   const [isRandomSize, setIsRandomSize] = useState(false);

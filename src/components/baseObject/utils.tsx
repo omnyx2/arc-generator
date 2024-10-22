@@ -1,5 +1,5 @@
-import { bitmapObject, singleARCObjectOption } from "./types";
-import { cmap, colorList } from '@/settings/cmap'
+import { singleARCObjectOption } from "./types";
+import { cmap } from '@/settings/cmap'
 
 export const getRandomColor = (options: singleARCObjectOption): number => {
     //   return options.colorType[Math.floor(Math.random() * options.colorType.length)];

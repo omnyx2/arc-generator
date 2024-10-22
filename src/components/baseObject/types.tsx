@@ -1,5 +1,5 @@
 
-export type Bitmap =  (string | number)[][];
+export type Bitmap =  number[][];
 
 export interface bitmapObject {
     bitmap: Bitmap;
@@ -40,4 +40,5 @@ export interface circleParams {
 export interface shapeARC {
     bitmap: Bitmap;
     size: number[];
+
 }

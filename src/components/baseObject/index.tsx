@@ -1,10 +1,7 @@
-import { Bitmap, singleARCObjectOption,} from "./types";
-import { cmap, colorList } from '@/settings/cmap'
-import { getRandomColor } from "./utils";
-import drawCircle  from './circle.type.one'
-import { circleParams } from './types'
-import { Radius } from "lucide-react";
-import drawTriangle from './triangle.type.one'
+import { Bitmap, singleARCObjectOption,} from "@/components/baseObject/types";
+import { getRandomColor } from "@/components/baseObject/utils";
+import drawCircle  from '@/components/baseObject/circle.type.one'
+import drawTriangle from '@/components/baseObject/triangle.type.one'
 // Function to generate a 2D bitmap based on the provided options
 export function generateBitmap(options: singleARCObjectOption): Bitmap {
     const [width, height] = options.size;
@@ -53,13 +50,10 @@ export function generateBitmap(options: singleARCObjectOption): Bitmap {
         case 'noise':
           drawNoise(); // Generate noise
           break;
-        case 'random':
-          Math.random() > 0.5 ? drawRectangle(x, y, size[0], size[1]) : drawCircle(x, y, size[0]); // Draw random shape
-          break;
         case 'tri':
           drawTriangle({
             cx:  Math.floor(size[0]/2),
-            cy:  0,
+            cy:  0  ,
             slope: 0.5,
             boxHeight: Math.floor(size[1]),
             boxWidth: Math.floor(size[0]),

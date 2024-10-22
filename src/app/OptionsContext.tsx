@@ -1,14 +1,12 @@
 'use client'
 
-import React, { createContext, useState, useCallback, ReactNode } from 'react';
-import { singleARCObjectOption, Bitmap } from '@/components/baseObject';
+import React, { createContext, useState, ReactNode } from 'react';
+import { singleARCObjectOption } from '@/components/baseObject';
 
 // Define the shape of the context value
-interface OptionsContextType {
+export interface OptionsContextType {
   options: singleARCObjectOption;
   setOptions: React.Dispatch<React.SetStateAction<singleARCObjectOption>>;
-  generatedOptions: singleARCObjectOption | null;
-  generateOptions: () => void;
 }
 
 // Create the context with a default value
@@ -27,8 +25,8 @@ const initOptions: singleARCObjectOption = {
 
 export const OptionsProvider: React.FC<OptionsProviderProps> = ({ children }) => {
 
-  const [options, setGeneratedOptions] = useState<singleARCObjectOption | null>(initOptions);
-  const value = { options, setOptions: setGeneratedOptions};
+  const [options, setGeneratedOptions] = useState<singleARCObjectOption>(initOptions);
+  const value: OptionsContextType  = { options, setOptions: setGeneratedOptions};
 
   return (
     <OptionsContext.Provider value={value}>

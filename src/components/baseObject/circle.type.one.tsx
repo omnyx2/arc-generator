@@ -1,5 +1,4 @@
 import { getRandomColor } from './utils'
-import { bitmapObject, singleARCObjectOption} from "./types";
 import { circleParams } from './types'
 
 const drawCircle = (params: circleParams) => {

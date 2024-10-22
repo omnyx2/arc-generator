@@ -12,10 +12,11 @@ const getColor = (value: number ): string => {
 };
 
 type BitmapRendererProps = {
-  data: Bitmap;
+  data: Bitmap | undefined; // Accept undefined in props
 };
 
-export const BitmapRenderer: React.FC<BitmapRendererProps> = ({ data }) => {
+
+export const BitmapRenderer: React.FC<BitmapRendererProps> = ({ data }: BitmapRendererProps) => {
   if (data === undefined) return;
   return (
     <div
@@ -25,7 +26,7 @@ export const BitmapRenderer: React.FC<BitmapRendererProps> = ({ data }) => {
         gap: '1px', // 셀 간격
       }}
     >
-      {data.flat().map((value, index) => (
+      {data.flat().map((value: number, index: number) => (
         <div
           key={index}
           style={{

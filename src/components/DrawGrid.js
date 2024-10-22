@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useShapeARCHistory } from '@/app/ARCShapeHistoryContext';
-import { trimZeros } from '@/components/baseObject/utils'
+import { trimZeros } from '@/components/baseObject/utils';
+
 const GridDrawing = ({handleOnSave}) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const [gridSize, setGridSize] = useState({ width: 20, height: 20 });
