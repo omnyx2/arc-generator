@@ -4,6 +4,7 @@ import { trimZeros } from '@/components/baseObject/utils';
 const GridDrawing = ({handleOnSave}) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const [gridSize, setGridSize] = useState({ width: 20, height: 20 });
+  const [shapeName, setShapeName] = useState("")
   const [selectedCells, setSelectedCells] = useState(new Set());
   const [gridArray, setGridArray] = useState([]);
   const gridRef = useRef(null);
@@ -101,8 +102,10 @@ const GridDrawing = ({handleOnSave}) => {
         selectedCells.has(`${x},${y}`) ? 1 : 0
       ))
     ))
-    handleOnSave(result)
+    
+    handleOnSave(result, shapeName)
     setSelectedCells(new Set());
+    setShapeName("")
     updateGridArray(new Set());
 
   };
@@ -178,6 +181,21 @@ const GridDrawing = ({handleOnSave}) => {
             min="1"
             max="50"
           />
+        </div>
+        <div className="flex gap-2 items-center">
+          <label>Shape Name:</label>
+          <input
+            type="strins"
+            value={shapeName}
+            onChange={(e) => {
+              const _ = e.target.value;
+              setShapeName(e.target.value);
+            }}
+            className="w-16 px-2 py-1 border rounded"
+            min="1"
+            max="50"
+          />
+
         </div>
       </div>
 

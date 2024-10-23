@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/SidePanel/index.js", "src/components/DrawGrid.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/SidePanel/index.js", "src/components/DrawGrid.js", "src/components/DraggableCard/index.js", "src/components/DraggableCard/DeleteIncluded.js"],
   "exclude": ["node_modules"]
 }

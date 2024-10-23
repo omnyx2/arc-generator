@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { SingleARCHistoryProvider } from './SingleARCHistoryContext';
 import { ShapeARCHistoryProvider } from "./ARCShapeHistoryContext";
+import { DAGProvider } from "./DAGContext";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -33,7 +34,9 @@ export default function RootLayout({
         <OptionsProvider>
           <SingleARCHistoryProvider>
             <ShapeARCHistoryProvider>
-             {children}
+              <DAGProvider>
+                {children}
+              </DAGProvider>
             </ShapeARCHistoryProvider>
           </SingleARCHistoryProvider>
         </OptionsProvider>

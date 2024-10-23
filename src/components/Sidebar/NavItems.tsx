@@ -55,7 +55,7 @@ import {
       icon: FileText
     },
     {
-      path: '/generator',
+      path: '/generator/hierachy',
       label: 'Settings',
       icon: Settings
     },

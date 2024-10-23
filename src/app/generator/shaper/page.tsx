@@ -7,11 +7,12 @@ import Gallery from '@/components/GalleryShape';
 
 const About: React.FC = () => {
     const { addToHistory } = useShapeARCHistory();
-    const ARCShapeGenerator = (shape: Bitmap) => {
+    const ARCShapeGenerator = (shape: Bitmap, shapeName: string) => {
       addToHistory({
         // name: "hi",
         bitmap: shape.map(e => [...e]),
         timestamp: new Date(),
+        shapeName
       });
     }
 

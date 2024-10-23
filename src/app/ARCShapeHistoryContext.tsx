@@ -7,6 +7,7 @@ interface ShapeARCHistoryEntry {
   options?: singleARCObjectOption;
   bitmap: Bitmap;
   timestamp: Date;
+  shapeName: string;
 }
 
 interface ShapeARCHistoryContext {
