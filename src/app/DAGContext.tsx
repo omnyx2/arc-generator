@@ -45,11 +45,29 @@ initGraph.addNode("1",  { nodeId: "1", mergeEdge: [], operations: [] , metadata:
 initGraph.addNode("2",  { nodeId: "2", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
 initGraph.addNode("3", { nodeId: "3", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
 initGraph.addNode("4", { nodeId: "4", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
+initGraph.addNode("5", { nodeId: "5", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
+initGraph.addNode("6", { nodeId: "6", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
+initGraph.addNode("7", { nodeId: "7", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
+initGraph.addNode("8", { nodeId: "8", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
+initGraph.addNode("9", { nodeId: "9", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
+initGraph.addNode("10", { nodeId: "10", mergeEdge: [], operations: [] , metadata: {arcs:  [], operations: []}})
+ 
 initGraph.mergeEdge("0", "1");
 initGraph.mergeEdge("0", "2");
-initGraph.mergeEdge("1", "3");
-initGraph.mergeEdge("2", "3");
-initGraph.mergeEdge("3", "4");
+initGraph.mergeEdge("0", "3");
+initGraph.mergeEdge("0", "4");
+initGraph.mergeEdge("4", "10");
+
+initGraph.mergeEdge("2", "5");
+initGraph.mergeEdge("3", "5");
+initGraph.mergeEdge("5", "9");
+initGraph.mergeEdge("1", "6");
+initGraph.mergeEdge("6", "7");
+initGraph.mergeEdge("6", "8");
+initGraph.mergeEdge("7", "9");
+initGraph.mergeEdge("8", "9");
+initGraph.mergeEdge("9", "10");
+ 
 
 export const DAGProvider: React.FC<DAGProviderProps> = ({ children }) => {
 
@@ -96,11 +114,13 @@ export const DAGProvider: React.FC<DAGProviderProps> = ({ children }) => {
     // this is for side case
     // Find parent nodes (nodes with edges toward the current node)
     const children = hierarchyMap.outNeighbors(nodeId);
-
+    const parents = hierarchyMap.inNeighbors(nodeId);
     hierarchyMap.addNode(uniqueCode, node);
-    hierarchyMap.mergeEdge(nodeId, uniqueCode)
+    
+    hierarchyMap.mergeEdge(nodeId, uniqueCode);
+    children.forEach((e) => hierarchyMap.mergeEdge(uniqueCode, e) );
+    children.forEach((e) => hierarchyMap.dropEdge(nodeId, e) );
 
-    children.forEach((e) => hierarchyMap.mergeEdge(uniqueCode, e) )
     const newGraph: DirectedGraph<nodeData, edgeData, graphData> = hierarchyMap.copy();
     
     return newGraph
